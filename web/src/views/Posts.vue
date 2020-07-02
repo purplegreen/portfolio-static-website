@@ -38,7 +38,7 @@
 import PostCard from "@/components/PostCard.vue";
 import sanity from "../sanity";
 // import BlockContent from "sanity-blocks-vue-component";
-const query = `*[_type == "post" ] | order(_createdAt asc)
+const query = `*[_type == "post" ] | order(priority desc, _updatedAt desc) 
 {
   _id,
   title,
@@ -53,7 +53,7 @@ const query = `*[_type == "post" ] | order(_createdAt asc)
   },
   body,
   favoriteColor
-}[0...50]`;
+}[0...29]`;
 
 export default {
   name: "Posts",
@@ -124,7 +124,7 @@ main {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -99%);
-  width: 80vw;
+  width: 70vw;
   height: 300px;
   margin: auto;
   display: flex;
@@ -246,7 +246,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: 1rem;
   width: 100vw;
   justify-content: space-around;
 }
