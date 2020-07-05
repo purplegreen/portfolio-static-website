@@ -167,4 +167,20 @@ body {
 svg.icon.incon-colors {
   fill: blue;
 }
+
+@media (max-width: 700px) {
+  .wrap-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    z-index: 9;
+    box-sizing: border-box;
+    margin-right: 3vw;
+    margin-left: 3vw;
+    background-color: white;
+  }
+}
 </style>

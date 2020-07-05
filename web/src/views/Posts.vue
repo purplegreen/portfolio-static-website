@@ -1,32 +1,32 @@
 <template>
   <main>
-    <kinesis-container class="kinesis-container">
-      <kinesis-element :strength="40">
-        <div class="kinesis-element">| | \</div>
-      </kinesis-element>
+    <div class="topone">
+      <kinesis-container class="kinesis-container">
+        <span class="kinesis-element">
+          <kinesis-element :strength="40">| | \</kinesis-element>
+        </span>
+      </kinesis-container>
 
-      <kinesis-element :strength="30">
-        <div class="top-anim">
-          <div class="box-one">
-            <p id="d0">d</p>
-            <p id="i">i</p>
-            <p id="g">g</p>
-            <p id="i">i</p>
-            <p id="t">t</p>
-            <p id="a">a</p>
-            <p id="l">l</p>
-          </div>
-          <div class="box-two">
-            <p id="d">d</p>
-            <p id="e">e</p>
-            <p id="s">s</p>
-            <p id="i">i</p>
-            <p id="g">g</p>
-            <p id="n">n</p>
-          </div>
+      <div class="top-anim">
+        <div class="box-one">
+          <p id="d0">d</p>
+          <p id="i">i</p>
+          <p id="g">g</p>
+          <p id="i">i</p>
+          <p id="t">t</p>
+          <p id="a">a</p>
+          <p id="l">l</p>
         </div>
-      </kinesis-element>
-    </kinesis-container>
+        <div class="box-two">
+          <p id="d">d</p>
+          <p id="e">e</p>
+          <p id="s">s</p>
+          <p id="i">i</p>
+          <p id="g">g</p>
+          <p id="n">n</p>
+        </div>
+      </div>
+    </div>
 
     <ul class="list">
       <PostCard v-for="post in posts" class="list__item" :key="post._id" v-bind:post="post" />
@@ -118,6 +118,21 @@ main {
 }
 
 /* first svg animation */
+
+.topone {
+  position: relative;
+  height: 400px;
+}
+
+.kinesis-container {
+  width: 60vw;
+  margin: auto;
+}
+
+.kinesis-element {
+  font-size: 30vw;
+  color: rgba(152, 170, 161, 0.3);
+}
 
 .top-anim {
   position: absolute;
@@ -250,13 +265,26 @@ main {
   justify-content: space-around;
 }
 
-.kinesis-container {
-  position: relative;
-  padding-bottom: 20vh;
-}
+@media (max-width: 700px) {
+  .topone {
+    height: 250px;
+  }
 
-.kinesis-element {
-  font-size: 30vw;
-  color: rgba(152, 170, 161, 0.3);
+  .kinesis-container {
+    width: 90vw;
+    height: 250px;
+    margin: auto;
+  }
+
+  .top-anim {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 90vw;
+    height: auto;
+    margin: auto;
+    font-size: 2.7em;
+    line-height: 0.1em;
+  }
 }
 </style>
