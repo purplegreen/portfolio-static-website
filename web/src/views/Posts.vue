@@ -38,14 +38,15 @@
 import PostCard from "@/components/PostCard.vue";
 import sanity from "../sanity";
 // import BlockContent from "sanity-blocks-vue-component";
-const query = `*[_type == "post" ] | order(priority desc, _updatedAt desc) 
+const query = `*[_type == "post" ] | order(releaseDate desc)
 {
   _id,
   title,
    posterImage,
   author,
   reference,
-  publishedAt,
+  createdAt,
+  releaseDate,
   "categories": categories[]->{
     _id,
     description,

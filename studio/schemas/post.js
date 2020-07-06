@@ -6,7 +6,7 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
     },
     {
       name: "slug",
@@ -14,86 +14,91 @@ export default {
       type: "slug",
       options: {
         source: "title",
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: "author",
       title: "Author",
       type: "reference",
-      to: { type: "author" }
+      to: { type: "author" },
+    },
+    {
+      name: "favoriteColor",
+      title: "Favorite color",
+      type: "color",
     },
     {
       name: "mainImage",
       title: "Main image",
       type: "image",
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
       title: "Image URL",
       name: "imageUrl",
       type: "url",
-      validation: Rule =>
+      validation: (Rule) =>
         Rule.uri({
-          scheme: ["http", "https", "mailto", "tel"]
-        })
+          scheme: ["http", "https", "mailto", "tel"],
+        }),
     },
     {
       name: "posterImage",
       title: "Poster image",
       type: "image",
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
+    },
+    {
+      name: "body",
+      title: "Body",
+      type: "block-content",
     },
     {
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "category" } }]
+      of: [{ type: "reference", to: { type: "category" } }],
     },
     {
-      name: "publishedAt",
-      title: "Published at",
-      type: "datetime"
+      name: "createdAt",
+      title: "Created at",
+      type: "datetime",
     },
     {
-      name: "body",
-      title: "Body",
-      type: "block-content"
+      name: "releaseDate",
+      title: "Release Date",
+      type: "datetime",
     },
-    {
-      name: "favoriteColor",
-      title: "Favorite color",
-      type: "color"
-    }
   ],
   orderings: [
     {
       title: "Release Date, New",
-      name: "releaseDateAsc",
-      by: [{ field: "releaseDate", direction: "desc" }]
+      name: "releaseDateDesc",
+      by: [{ field: "releaseDate", direction: "desc" }],
     },
     {
       title: "Release Date, Old",
       name: "releaseDateAsc",
-      by: [{ field: "releaseDate", direction: "asc" }]
-    }
+      by: [{ field: "releaseDate", direction: "asc" }],
+    },
   ],
 
   preview: {
     select: {
       title: "title",
       author: "author.name",
-      media: "mainImage"
+      media: "mainImage",
     },
     prepare(selection) {
       const { author } = selection;
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
+        subtitle: author && `by ${author}`,
       });
-    }
-  }
+    },
+  },
 };
